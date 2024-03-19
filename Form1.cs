@@ -19,6 +19,7 @@ namespace calculadoraNacho
         public Form1()
         {
             InitializeComponent();
+
         }
     }
 }
