@@ -204,10 +204,18 @@ namespace calculadoraNacho
             estado = false;
         }
 
+        private void txtDisplay_TextChanged(object sender, EventArgs e)
+        {
+            txtDisplay.Text = $"{A} {signo} {B} = {resultado}";
+        }
+
         private void btnEqual_Click_1(object sender, EventArgs e)
         {
             Operaciones(ref signo, ref A, ref B);
         }
+
+ 
+
         public void Suma(ref double a, ref double b)
         {
             resultado = a + b;
