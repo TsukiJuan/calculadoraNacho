@@ -54,6 +54,7 @@
             this.btnResta = new System.Windows.Forms.Button();
             this.btnMultiplicacion = new System.Windows.Forms.Button();
             this.btnPunto = new System.Windows.Forms.Button();
+            this.lblMathExpression = new System.Windows.Forms.Label();
             this.pnlHistory.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -71,6 +72,7 @@
             this.btnClearText.TabIndex = 0;
             this.btnClearText.Text = "AC";
             this.btnClearText.UseVisualStyleBackColor = false;
+            this.btnClearText.Click += new System.EventHandler(this.btnClearText_Click);
             // 
             // btnPorcentaje
             // 
@@ -188,8 +190,8 @@
             this.txtShowOperation.Name = "txtShowOperation";
             this.txtShowOperation.Size = new System.Drawing.Size(334, 25);
             this.txtShowOperation.TabIndex = 10;
-            this.txtShowOperation.Text = "0";
             this.txtShowOperation.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtShowOperation.TextChanged += new System.EventHandler(this.txtShowOperation_TextChanged);
             // 
             // txtDisplay
             // 
@@ -352,11 +354,21 @@
             this.btnPunto.Text = ".";
             this.btnPunto.UseVisualStyleBackColor = false;
             // 
+            // lblMathExpression
+            // 
+            this.lblMathExpression.AutoSize = true;
+            this.lblMathExpression.Location = new System.Drawing.Point(285, 6);
+            this.lblMathExpression.Name = "lblMathExpression";
+            this.lblMathExpression.Size = new System.Drawing.Size(18, 19);
+            this.lblMathExpression.TabIndex = 25;
+            this.lblMathExpression.Text = "0";
+            // 
             // Form1
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
             this.ClientSize = new System.Drawing.Size(334, 470);
+            this.Controls.Add(this.lblMathExpression);
             this.Controls.Add(this.btnPunto);
             this.Controls.Add(this.btnMultiplicacion);
             this.Controls.Add(this.btnResta);
@@ -422,6 +434,7 @@
         private System.Windows.Forms.Button btnResta;
         private System.Windows.Forms.Button btnMultiplicacion;
         private System.Windows.Forms.Button btnPunto;
+        private System.Windows.Forms.Label lblMathExpression;
     }
 }
 

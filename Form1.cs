@@ -204,17 +204,27 @@ namespace calculadoraNacho
             estado = false;
         }
 
+        private void txtShowOperation_TextChanged(object sender, EventArgs e)
+        {
+        }
+
+
         private void txtDisplay_TextChanged(object sender, EventArgs e)
         {
-            txtDisplay.Text = $"{A} {signo} {B} = {resultado}";
+            txtDisplay.Text = $"{resultado}";
         }
+       
 
         private void btnEqual_Click_1(object sender, EventArgs e)
         {
             Operaciones(ref signo, ref A, ref B);
+            lblMathExpression.Text = $"{A} {signo} {B}";
         }
 
- 
+        private void btnClearText_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
 
         public void Suma(ref double a, ref double b)
         {
