@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 /*Nacho opera
- * Integrantes: Juan David Calderon Jaramillo
+ * Integrantes: Juan David Calderon Jaramillo, Camilo Orozco Isaza
  */
 
 namespace calculadoraNacho
@@ -215,36 +215,110 @@ namespace calculadoraNacho
 
         private void btnEqual_Click_1(object sender, EventArgs e)
         {
-            Operaciones(ref signo, ref A, ref B);
-            lblMathExpression.Text = $"{A} {signo} {B}";
-        }
+            if (!string.IsNullOrEmpty(B))
+            {
+                Operaciones(ref signo, ref A, ref B);
+                lblMathExpression.Text += $" {signo} {B} = {resultado}"; // Agregamos la operación y el resultado a la expresión actual
 
+                // Actualizamos el primer operando con el resultado y limpiamos el segundo operando y el signo
+                A = resultado.ToString();
+                B = "";
+                signo = "";
+
+                estado = false; // Cambiamos al segundo operando (B)
+            }
+            else
+            {
+                // Si no hay un segundo operando, mostramos solo el primer operando en la expresión
+                lblMathExpression.Text = A;
+            }
+        }
         private void btnSuma_Click(object sender, EventArgs e)
         {
-            signo = "+";
-            estado = false;
-            UpdateMathExpression("+");
+            if (!string.IsNullOrEmpty(A))
+            {
+                if (!string.IsNullOrEmpty(B)) 
+                {
+                    Operaciones(ref signo, ref A, ref B);
+                    lblMathExpression.Text = resultado.ToString();
+                }
+                else
+                {
+                    lblMathExpression.Text = A;
+                }
+
+                
+                B = "";
+                signo = "+";
+
+                estado = false; 
+            }
         }
 
         private void btnResta_Click(object sender, EventArgs e)
         {
-            signo = "-";
-            estado = false;
-            UpdateMathExpression("-");
+            if (!string.IsNullOrEmpty(A))
+            {
+                if (!string.IsNullOrEmpty(B))
+                {
+                    Operaciones(ref signo, ref A, ref B);
+                    lblMathExpression.Text = resultado.ToString();
+                }
+                else
+                {
+                    lblMathExpression.Text = A;
+                }
+
+                
+                B = "";
+                signo = "-";
+
+                estado = false; 
+            }
         }
 
         private void btnMultiplicacion_Click(object sender, EventArgs e)
         {
-            signo = "*";
-            estado = false;
-            UpdateMathExpression("*");
+            if (!string.IsNullOrEmpty(A))
+            {
+                if (!string.IsNullOrEmpty(B)) 
+                {
+                    Operaciones(ref signo, ref A, ref B);
+                    lblMathExpression.Text = resultado.ToString();
+                }
+                else
+                {
+                    lblMathExpression.Text = A;
+                }
+
+      
+                B = "";
+                signo = "*";
+
+                estado = false; 
+            }
         }
 
         private void btnDivision_Click(object sender, EventArgs e)
         {
-            signo = "÷";
-            estado = false;
-            UpdateMathExpression("÷");
+            if (!string.IsNullOrEmpty(A))
+            {
+                if (!string.IsNullOrEmpty(B)) 
+                {
+                    Operaciones(ref signo, ref A, ref B);
+                    lblMathExpression.Text = resultado.ToString();
+                }
+                else
+                {
+                    lblMathExpression.Text = A;
+                }
+
+                
+                B = "";
+                signo = "÷";
+
+                estado = false; 
+            }
         }
         public void btnClearText_Click(object sender, EventArgs e)
         {
@@ -271,9 +345,53 @@ namespace calculadoraNacho
                 txtDisplay.Text = $"{resultado}";
             }
         }
-       
 
-      
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            if (estado)
+            {
+                if (!string.IsNullOrEmpty(A))
+                {
+                    A = A.Substring(0, A.Length - 1);
+                    lblMathExpression.Text = A;
+                }
+            }
+            else
+            {
+                if (!string.IsNullOrEmpty(B))
+                {
+                    B = B.Substring(0, B.Length - 1);
+                    lblMathExpression.Text = $"{A} {signo} {B}";
+                }
+                else
+                {
+                    estado = true;
+                    lblMathExpression.Text = A;
+                }
+            }
+        }
+
+        private void btnPorcentaje_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(A) && !string.IsNullOrEmpty(B))
+            {
+                double porcentaje = (Convert.ToDouble(B) * 100) / Convert.ToDouble(A);
+                lblMathExpression.Text += $" {porcentaje}%"; // Agregamos el porcentaje a la expresión actual
+
+                // Limpiamos los operadores y cambiamos al segundo operando (B)
+                A = "";
+                B = "";
+                signo = "";
+                estado = false;
+            }
+        }
+
+        private void lblMathExpression_Click(object sender, EventArgs e)
+        {
+
+
+        }
+
         public void Suma(ref double a, ref double b)
         {
             resultado = a + b;

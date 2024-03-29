@@ -84,6 +84,7 @@
             this.btnPorcentaje.TabIndex = 1;
             this.btnPorcentaje.Text = "%";
             this.btnPorcentaje.UseVisualStyleBackColor = false;
+            this.btnPorcentaje.Click += new System.EventHandler(this.btnPorcentaje_Click);
             // 
             // btnDivision
             // 
@@ -107,6 +108,7 @@
             this.btnClear.TabIndex = 4;
             this.btnClear.Text = "⌫";
             this.btnClear.UseVisualStyleBackColor = false;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // btnSuma
             // 
@@ -358,9 +360,10 @@
             this.lblMathExpression.AutoSize = true;
             this.lblMathExpression.Location = new System.Drawing.Point(256, 6);
             this.lblMathExpression.Name = "lblMathExpression";
-            this.lblMathExpression.Size = new System.Drawing.Size(18, 19);
+            this.lblMathExpression.Size = new System.Drawing.Size(21, 24);
             this.lblMathExpression.TabIndex = 25;
             this.lblMathExpression.Text = "0";
+            this.lblMathExpression.Click += new System.EventHandler(this.lblMathExpression_Click);
             // 
             // Form1
             // 
