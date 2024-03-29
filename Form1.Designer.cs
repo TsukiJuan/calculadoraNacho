@@ -191,7 +191,6 @@
             this.txtShowOperation.Size = new System.Drawing.Size(334, 25);
             this.txtShowOperation.TabIndex = 10;
             this.txtShowOperation.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtShowOperation.TextChanged += new System.EventHandler(this.txtShowOperation_TextChanged);
             // 
             // txtDisplay
             // 
@@ -357,7 +356,7 @@
             // lblMathExpression
             // 
             this.lblMathExpression.AutoSize = true;
-            this.lblMathExpression.Location = new System.Drawing.Point(285, 6);
+            this.lblMathExpression.Location = new System.Drawing.Point(256, 6);
             this.lblMathExpression.Name = "lblMathExpression";
             this.lblMathExpression.Size = new System.Drawing.Size(18, 19);
             this.lblMathExpression.TabIndex = 25;

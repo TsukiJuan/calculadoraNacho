@@ -24,6 +24,7 @@ namespace calculadoraNacho
         public Boolean estado = true;
         public double a, b, resultado;
         public string signo, A, B;
+        public bool isclicked = false;
         //Cuando se escribe la operación a realizar. Ejemplo: 12 - 23, al dar clic en el boton menos, se le asignará a la variable
         // signo el valor: -. Y cuando se termine de ingresar la operación y se de clic en el boton "=", se invocara la función 
         //"Operaciones" y le llevara el signo correspondiente, para asi saber que operación realizar.
@@ -60,10 +61,12 @@ namespace calculadoraNacho
             if(estado) 
             {
                 A = A + "0";
+                lblMathExpression.Text = A;
             }
             else
             {
                 B = B + "0";
+                lblMathExpression.Text = B;
             }
         }
 
@@ -77,10 +80,12 @@ namespace calculadoraNacho
             if (estado)
             {
                 A = A + "1";
+                lblMathExpression.Text = A;
             }
             else
             {
                 B = B + "1";
+                lblMathExpression.Text = B;
             }
         }
 
@@ -89,22 +94,26 @@ namespace calculadoraNacho
             if (estado)
             {
                 A = A + "2";
+                lblMathExpression.Text = A;
             }
             else
             {
                 B = B + "2";
+                lblMathExpression.Text = B;
             }
         }
 
-        private void btnTres_Click(object sender, EventArgs e)
+        public void btnTres_Click(object sender, EventArgs e)
         {
             if (estado)
             {
                 A = A + "3";
+                lblMathExpression.Text = A;
             }
             else
             {
                 B = B + "3";
+                lblMathExpression.Text = B;
             }
         }
 
@@ -113,10 +122,12 @@ namespace calculadoraNacho
             if (estado)
             {
                 A = A + "4";
+                lblMathExpression.Text = A;
             }
             else
             {
                 B = B + "4";
+                lblMathExpression.Text = B;
             }
         }
 
@@ -125,10 +136,12 @@ namespace calculadoraNacho
             if (estado)
             {
                 A = A + "5";
+                lblMathExpression.Text = A;
             }
             else
             {
                 B = B + "5";
+                lblMathExpression.Text = B;
             }
         }
 
@@ -137,10 +150,12 @@ namespace calculadoraNacho
             if (estado)
             {
                 A = A + "6";
+                lblMathExpression.Text = A;
             }
             else
             {
                 B = B + "6";
+                lblMathExpression.Text = B;
             }
         }
 
@@ -149,10 +164,12 @@ namespace calculadoraNacho
             if (estado)
             {
                 A = A + "7";
+                lblMathExpression.Text = A;
             }
             else
             {
                 B = B + "7";
+                lblMathExpression.Text = B;
             }
         }
 
@@ -161,10 +178,12 @@ namespace calculadoraNacho
             if (estado)
             {
                 A = A + "8";
+                lblMathExpression.Text = A;
             }
             else
             {
                 B = B + "8";
+                lblMathExpression.Text = B;
             }
         }
 
@@ -173,47 +192,26 @@ namespace calculadoraNacho
             if (estado)
             {
                 A = A + "9";
+                lblMathExpression.Text = A;
             }
             else
             {
                 B = B + "9";
+                lblMathExpression.Text = B;
             }
         }
 
-        private void btnDivision_Click(object sender, EventArgs e)
+        private void UpdateMathExpression(string text)
         {
-            signo = "÷";
-            estado = false;
+            if (estado)
+            {
+                lblMathExpression.Text = A + text;
+            }
+            else
+            {
+                lblMathExpression.Text = A +" " + signo  + " " + B;
+            }
         }
-
-        private void btnMultiplicacion_Click(object sender, EventArgs e)
-        {
-            signo = "*";
-            estado = false;
-        }
-
-        private void btnResta_Click(object sender, EventArgs e)
-        {
-            signo = "-";
-            estado = false;
-        }
-
-        private void btnSuma_Click(object sender, EventArgs e)
-        {
-            signo = "+";
-            estado = false;
-        }
-
-        private void txtShowOperation_TextChanged(object sender, EventArgs e)
-        {
-        }
-
-
-        private void txtDisplay_TextChanged(object sender, EventArgs e)
-        {
-            txtDisplay.Text = $"{resultado}";
-        }
-       
 
         private void btnEqual_Click_1(object sender, EventArgs e)
         {
@@ -221,11 +219,61 @@ namespace calculadoraNacho
             lblMathExpression.Text = $"{A} {signo} {B}";
         }
 
-        private void btnClearText_Click(object sender, EventArgs e)
+        private void btnSuma_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            signo = "+";
+            estado = false;
+            UpdateMathExpression("+");
         }
 
+        private void btnResta_Click(object sender, EventArgs e)
+        {
+            signo = "-";
+            estado = false;
+            UpdateMathExpression("-");
+        }
+
+        private void btnMultiplicacion_Click(object sender, EventArgs e)
+        {
+            signo = "*";
+            estado = false;
+            UpdateMathExpression("*");
+        }
+
+        private void btnDivision_Click(object sender, EventArgs e)
+        {
+            signo = "÷";
+            estado = false;
+            UpdateMathExpression("÷");
+        }
+        public void btnClearText_Click(object sender, EventArgs e)
+        {
+
+            A = "";
+            B = "";
+            signo = "";
+            estado = true;
+            lblMathExpression.Text = "0";
+            isclicked = true;
+            txtDisplay.Text = "0";
+        }
+
+        public void txtDisplay_TextChanged(object sender, EventArgs e)
+        {
+       
+            if (isclicked == true)
+            {
+                txtDisplay.Text = "0";
+                isclicked = false;
+            }
+            else
+            {
+                txtDisplay.Text = $"{resultado}";
+            }
+        }
+       
+
+      
         public void Suma(ref double a, ref double b)
         {
             resultado = a + b;
