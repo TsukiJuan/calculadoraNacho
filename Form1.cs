@@ -215,110 +215,35 @@ namespace calculadoraNacho
 
         private void btnEqual_Click_1(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(B))
-            {
-                Operaciones(ref signo, ref A, ref B);
-                lblMathExpression.Text += $" {signo} {B} = {resultado}"; // Agregamos la operación y el resultado a la expresión actual
-
-                // Actualizamos el primer operando con el resultado y limpiamos el segundo operando y el signo
-                A = resultado.ToString();
-                B = "";
-                signo = "";
-
-                estado = false; // Cambiamos al segundo operando (B)
-            }
-            else
-            {
-                // Si no hay un segundo operando, mostramos solo el primer operando en la expresión
-                lblMathExpression.Text = A;
-            }
+            Operaciones(ref signo, ref A, ref B);
+            lblMathExpression.Text = $"{A} {signo} {B}";
         }
         private void btnSuma_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(A))
-            {
-                if (!string.IsNullOrEmpty(B)) 
-                {
-                    Operaciones(ref signo, ref A, ref B);
-                    lblMathExpression.Text = resultado.ToString();
-                }
-                else
-                {
-                    lblMathExpression.Text = A;
-                }
-
-                
-                B = "";
-                signo = "+";
-
-                estado = false; 
-            }
+            signo = "+";
+            estado = false;
+            UpdateMathExpression("+");
         }
 
         private void btnResta_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(A))
-            {
-                if (!string.IsNullOrEmpty(B))
-                {
-                    Operaciones(ref signo, ref A, ref B);
-                    lblMathExpression.Text = resultado.ToString();
-                }
-                else
-                {
-                    lblMathExpression.Text = A;
-                }
-
-                
-                B = "";
-                signo = "-";
-
-                estado = false; 
-            }
+            signo = "-";
+            estado = false;
+            UpdateMathExpression("-");
         }
 
         private void btnMultiplicacion_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(A))
-            {
-                if (!string.IsNullOrEmpty(B)) 
-                {
-                    Operaciones(ref signo, ref A, ref B);
-                    lblMathExpression.Text = resultado.ToString();
-                }
-                else
-                {
-                    lblMathExpression.Text = A;
-                }
-
-      
-                B = "";
-                signo = "*";
-
-                estado = false; 
-            }
+            signo = "*";
+            estado = false;
+            UpdateMathExpression("*");
         }
 
         private void btnDivision_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(A))
-            {
-                if (!string.IsNullOrEmpty(B)) 
-                {
-                    Operaciones(ref signo, ref A, ref B);
-                    lblMathExpression.Text = resultado.ToString();
-                }
-                else
-                {
-                    lblMathExpression.Text = A;
-                }
-
-                
-                B = "";
-                signo = "÷";
-
-                estado = false; 
-            }
+            signo = "÷";
+            estado = false;
+            UpdateMathExpression("÷");
         }
         public void btnClearText_Click(object sender, EventArgs e)
         {
